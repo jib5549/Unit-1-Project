@@ -1,54 +1,87 @@
 * {
-    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
     margin: 0;
+    font-family: 'Finger Paint', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 header {
     color: white;
-    font-size: 30px;
+    font-size: 10vmin;
     text-align: center;
+    letter-spacing: .1vmin;
+    font-weight: bold;
+    margin-top: -11vmin;
+}
+
+h1 {
+    color: wheat;
+    font-size: 3vmin;
+    text-align: center;
+    margin-top: -1vmin;
 }
 
 main {
     background-color: #12181B;
     height: 100vh;
-    padding-top: 1px;
-}
-
-#board {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
-    max-width: 300px;
-}
-
-.box {
-    border: 1px solid white;
-    min-width: 100px;
-    min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    font-size: 50px;
+    flex-direction: column;
 }
 
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 450px;
+}
+
+.box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 150px;
+   width: 150px;
+   font-size: 120px;
+   color: grey;
+   border-right: 5px solid;
+   border-bottom: 5px solid;
+}
+
+ /* for each 3rd child in the box class it's going to get rid of the border */
+.box:nth-child(3n) {
+    border-right: none;;
+}
+
+/* count up to 6 div and every other div that has this box class after the 6 one remove the border */
+.box:nth-child(6) ~ .box {
+    border-bottom: none;;
+}
 
 #startBtn {
-    background-color: blueviolet;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    margin-top: 4vmin;
+    color: grey;
     padding: 10px;
     border-radius: 10px;
     border: none;
     font-size: 15px;
     cursor: pointer;
+    transition: 200ms transform;
 }
-
 
 #restartBtn {
-    background-color: blueviolet;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: grey;
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -56,10 +89,9 @@ main {
     cursor: pointer;
 }
 
-
 #musicBtn {
-    background-color: blueviolet;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: grey;
     padding: 10px;
     border-radius: 10px;
     border: none;
