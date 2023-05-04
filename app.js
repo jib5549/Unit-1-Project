@@ -3,17 +3,18 @@ const PLAYERS = {
     '1' : 'X', // set player to 1
     '-1' : 'O' // set player to -1
 };
-const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-]
-const box = document.querySelectorAll('.box')
+// const winConditions = [
+//     [0, 1, 2],
+//     [3, 4, 5],
+//     [6, 7, 8],
+//     [0, 3, 6],
+//     [1, 4, 7],
+//     [2, 5, 8],
+//     [0, 4, 8],
+//     [2, 4, 6]
+// ]
+
+
 
 /*----- ----------------------------------------- state variables ------------------------------------*/
 let turn; //this will be player1 and player2
@@ -21,14 +22,22 @@ let board; //this will the board for the game tic tac toe
 let winner; // this will set to null and eventually a winner, loser, or a tie will come out
 
 
+
 /*----- ----------------------------------------- cached elements  ------------------------------------*/
 const messageEl = document.querySelector('h1');
 const restartBtn = document.getElementById('restartBtn')
+const boxes = [...document.querySelectorAll('.box')]
+const audio = document.getElementById('audio')
 
 /*----- ----------------------------------------- event listeners ------------------------------------*/
 
-// restartBtn.addEventListener('click', ()) // this 
-// musicBtn.addEventListener('click', ()) // this button will allow the player to have the music on or off, it needs a function
+restartBtn.addEventListener('click', init)
+console.log(boxes);
+boxes.forEach((box) => {
+    box.addEventListener('click', () => console.log('click')) 
+}) 
+
+
 
 
 /*----- ----------------------------------------- functions ---------------------------------------------- */
@@ -56,7 +65,9 @@ function render () {
 function renderBoard() {
     board.forEach(function(colArr, colIdx) {
         colArr.forEach(function(rowVal, rowIdx) {
-            
+            const cellId = `c${colIdx}r${rowIdx}`
+            const cellEl = document.getElementById(cellId)
+            console.log(cellEl);
         })
     })
 }
@@ -76,5 +87,17 @@ function renderControls() {
         restartBtn.style.visibility = 'hidden'
     } else  {
         restartBtn.style.visibility = 'visible'
+    }
+}
+
+function getWinner() {
+
+}
+
+function playAudio() {
+    if(audio.paused) {
+        audio.play()
+    } else {
+        audio.pause()
     }
 }

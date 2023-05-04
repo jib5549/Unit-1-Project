@@ -81,7 +81,7 @@ main {
 
 #restartBtn {
     background-color: rgb(255, 255, 255);
-    color: grey;
+    color: rgb(0, 0, 0);
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -91,10 +91,15 @@ main {
 
 #musicBtn {
     background-color: rgb(255, 255, 255);
-    color: grey;
+    color: rgb(0, 0, 0);
     padding: 10px;
     border-radius: 10px;
     border: none;
     font-size: 15px;
     cursor: pointer;
+    font-weight: 600;
+}
+
+#musicBtn:hover {
+    background-color: rgb(226, 212, 253);
 }
