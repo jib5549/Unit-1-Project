@@ -1,8 +1,9 @@
 /*----- ----------------------------------------- constants ---------------------------------------------- */
 const PLAYERS = {
     '1' : 'X', // set player to 1
-    '-1' : 'O' // set player to -1
+    '-1' : 'O', // set player to -1
 };
+
 // const winConditions = [
 //     [0, 1, 2],
 //     [3, 4, 5],
@@ -20,11 +21,12 @@ const PLAYERS = {
 let turn; //this will be player1 and player2
 let board; //this will the board for the game tic tac toe
 let winner; // this will set to null and eventually a winner, loser, or a tie will come out
+let currentPlayer = 'X';
 
 
 
 /*----- ----------------------------------------- cached elements  ------------------------------------*/
-const messageEl = document.querySelector('h1');
+const messageEl = document.getElementById('message');
 const restartBtn = document.getElementById('restartBtn')
 const boxes = [...document.querySelectorAll('.box')]
 const audio = document.getElementById('audio')
@@ -32,9 +34,9 @@ const audio = document.getElementById('audio')
 /*----- ----------------------------------------- event listeners ------------------------------------*/
 
 restartBtn.addEventListener('click', init)
-console.log(boxes);
+
 boxes.forEach((box) => {
-    box.addEventListener('click', () => console.log('click')) 
+    box.addEventListener('click', boxClicked) 
 }) 
 
 
@@ -44,7 +46,7 @@ boxes.forEach((box) => {
 init();
 
 function init() { // this resets the board with a clean sheet
-    turn = 1;
+    turn = 1
     board = [
     [0, 0, 0,], // col 0 represents the tic tac toe board in 2d 
     [0, 0, 0,], // col 1 represents the tic tac toe board in 2d 
@@ -58,7 +60,7 @@ render();
 // this function transfers the state of our application to the DOM
 function render () {
     renderBoard();
-    renderMessage();
+    turnMessage();
     renderControls();
 }
 
@@ -72,7 +74,7 @@ function renderBoard() {
     })
 }
 
-function renderMessage() {
+function turnMessage() {
     if(winner === 'T') {
         messageEl.innerText = "It's a Tie!!"
     } else if(winner) {
@@ -89,6 +91,18 @@ function renderControls() {
         restartBtn.style.visibility = 'visible'
     }
 }
+
+function boxClicked(event) {
+   if(event.target.textContent !== '') {
+    return // prevent overwriting existing moves
+   }
+   event.target.textContent = currentPlayer;
+
+   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+
+   messageEl.textContent = `${currentPlayer}'s turn`
+}
+
 
 function getWinner() {
 
