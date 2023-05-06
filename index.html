@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 5 - Practical HW</title>
+    <title>Tic-Tac-Toe Project</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Londrina+Shadow&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
@@ -16,24 +16,17 @@
     <main>
         <header>TIC TAC TOE</header> 
         <h1 id='message'>X's Turn</h1>
-        <div id="board">
-            <div class="box" id="c0r0"></div>
-            <div class="box" id="c1r0"></div>
-            <div class="box" id="c2r0"></div>
-
-            <div class="box" id="c0r1"></div>
-            <div class="box" id="c1r1"></div>
-            <div class="box" id="c2r1"></div>
-
-            <div class="box" id="c0r2"></div>
-            <div class="box" id="c1r2"></div>
-            <div class="box" id="c2r2"></div>
+        <div id="scoreboard">
+            <div id="x-score">Player X: 0</div>
+            <div id="o-score">Player O: 0</div>
         </div>
+        <div id="board"></div>
         <button id="restartBtn">RESTART 🔄</button>
         <button id="musicBtn"; onclick="playAudio()">MUSIC 🎵</button>
 
         <audio id="audio">
             <source src="assets/music/elevatormusic.mp3" type="audio/mpeg">
+            <source src="assets/music/localforest.mp3" type="audio/mpeg">
         </audio>
     </main>
     
