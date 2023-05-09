@@ -1,8 +1,8 @@
 /*----- ----------------------------------------- constants ---------------------------------------------- */
 const PLAYERS = {
-  1: "X", // set player to 1
-  "-1": "O", // set player to -1
-  null: "", //empty string
+  '1': "X", // set player to 1
+  '-1': "O", // set player to -1
+  'null': "", //empty string
 };
 
 const winConditions = [
@@ -20,91 +20,65 @@ const winConditions = [
 let turn; //this will be player1 and player2
 let winner; // this will set to null and eventually a winner, loser, or a tie will come out
 let currentPlayer = "X";
-let score = {
-  // setting a new variable "score" to keep track of the scores for both players
-  '1' : 0,
-  '-1' : 0,
-};
 let board;
 
 /*----- ----------------------------------------- cached elements  ------------------------------------*/
 const messageEl = document.getElementById("message");
 const restartBtn = document.getElementById("restartBtn");
 const audio = document.getElementById("audio");
-const gameBoard = document.getElementById("board");
+const gameboardEl = document.getElementById("board");
+const scoreBoardEl = document.getElementById("scoreboard")
+const boxEl = [...document.querySelectorAll(".box")]
+
 
 /*----- ----------------------------------------- event listeners ------------------------------------*/
-
 restartBtn.addEventListener("click", init);
+gameboardEl.addEventListener('click', boxClicked)
 
 /*----- ----------------------------------------- functions ---------------------------------------------- */
 init();
 
 function init() {
-  // this resets the board with a clean sheet
   turn = 1;
-  winner = null; // since it's the beginning there is no winner or loser
-  board = [];
-  createBoard();
+  winner = null; 
+  board = [null, null, null, null, null, null, null, null, null, ];
   render();
 }
 
-function createBoard() {
-  gameBoard.innerHTML = "";
-  for (let i = 0; i < 9; i++) {
-    const box = document.createElement("div");
-    box.className = "box";
-    box.id = i;
-    box.addEventListener("click", boxClicked);
-    gameBoard.appendChild(box);
-  }
-}
-
 function checkWinner() {
-    console.log(board);
   for (let i = 0; i < winConditions.length; i++) {
-    if (
-      Math.abs(
-        board[winConditions[i][0]] +
-          board[winConditions[i][1]] +
-          board[winConditions[i][2]] ===
-          3
-      )
-    ) {
-        console.log('winner');
-      return board[winConditions[i][0]];
+    if (Math.abs(board[winConditions[i][0]] +
+                 board[winConditions[i][1]] +
+                 board[winConditions[i][2]]) === 3) {
+            return board[winConditions[i][0]]
+        }
     }
-  }
-  if (board.includes(null)) return false;
-  return "T";
+    if(board.includes(null)) return false;
+    return 'T'
 }
 
 // this function transfers the state of our application to the DOM
 function render() {
-  turnMessage();
-  renderControls();
-}
+    boxEl.forEach(function(box, position) {
+        box.textContent = PLAYERS[board[position]]
+    })
+    if(!winner) {
+        messageEl.textContent = `${PLAYERS[turn]}'s turn`
+    } else if(winner === 'T') {
+        messageEl.textContent = `Tie Game`
+    } else {
+        messageEl.textContent = `${PLAYERS[winner]} WINS!!!`
+    }
+};
 
-function turnMessage() {
-  if (winner === "T") {
-    messageEl.innerText = "It's a Tie!!";
-  } else if (winner) {
-    messageEl.innerText = `${PLAYERS[winner]}'s Wins!!`;
-  } else {
-    messageEl.innerText = `${PLAYERS[turn]}'s turn`;
-  }
-}
 
 function boxClicked(event) {
-  if (event.target.textContent !== "") {
-    return; // prevent overwriting existing moves
-  }
-  event.target.textContent = currentPlayer;
-
-  currentPlayer = currentPlayer === "X" ? "O" : "X";
-
-  messageEl.textContent = `${currentPlayer}'s turn`;
-  checkWinner()
+    const position = event.target.id
+    if(winner || board[position] !== null) return
+    board[position] = turn
+    turn *= -1
+    winner = checkWinner()
+    render()
 }
 
 function renderControls() {
