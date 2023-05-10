@@ -17,7 +17,7 @@ header {
     text-align: center;
     letter-spacing: .1vmin;
     font-weight: bold;
-    margin-top: -11vmin;
+    margin-top: -1vmin;
 }
 
 h1 {
@@ -98,7 +98,7 @@ main {
     transition: 200ms transform;
 }
 
-#restartBtn {
+#clearBtn {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     padding: 10px;
@@ -106,11 +106,10 @@ main {
     border: none;
     font-size: 15px;
     cursor: pointer;
-    margin-bottom: 4px;
-    margin-top: 20px;
+    font-weight: 600;
 }
 
-#restartBtn:hover {
+#clearBtn:hover {
     background-color: rgb(99, 98, 89);
 }
 
@@ -123,8 +122,21 @@ main {
     font-size: 15px;
     cursor: pointer;
     font-weight: 600;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 #musicBtn:hover {
     background-color: rgb(226, 212, 253);
+}
+
+#freshGameBtn {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
 }
