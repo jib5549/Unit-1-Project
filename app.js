@@ -86,14 +86,21 @@ function render() {
     messageEl.textContent = `Tie Game`;
   } else {
     messageEl.textContent = `${PLAYERS[winner]} WINS!!!`;
+    
   }
   console.log(winner);
   if (PLAYERS[winner] === "X") {
     xScore += 1;
     document.getElementById("x-score").textContent = `Player X: ${xScore}`;
+    if (xScore == 3) {
+      alert('PLAYER X has won the game!!!')
+    }
   } else if (PLAYERS[winner] === "O") {
     oScore += 1;
     document.getElementById("o-score").textContent = `Player O: ${oScore}`;
+    if (oScore == 3) {
+      alert('PLAYER O has won the game!!!')
+    }
   }
   gameCount += 1;
   updateScoreBoard();
