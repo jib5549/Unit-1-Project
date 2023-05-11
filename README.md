@@ -11,7 +11,8 @@
     Be the first to win total of three rounds and you WIN!
 
 
-![Alt text](../../../Desktop/zc.PNG)
+![zc](https://github.com/jib5549/Unit-1-Project/assets/61801212/85f35a1d-727e-493f-9eb8-d2a66a6758e4)
+
 
 
 
