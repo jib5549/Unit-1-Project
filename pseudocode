@@ -1,0 +1,23 @@
+1) first, start by identifying constants, variables, cached element references, event listeners, and functions for the project
+    1.1) setting the players to "1" and "-1" so its able to switch turns with a simple multiplication of *= -1.
+    1.2) there are eight ways to win tic-tac-toe and let's declare it as winConditions and put it in as an array so it can iterate through each to check after each turn
+
+2) define required variables used to track the state of the game.
+    2.1) let's use a board 2d array to represent the boxes in the board
+    2.2) find a way to keep track of who's turn it is
+    2.3) it should be able to tell if there is a winner, loser, or a tie in the game and it should always check after each turn
+
+3) when the app loads it should:
+    3.1) initialize the state variables
+        3.1.1) all the boards are going to be null in the beginning because when the game starts its a clean board
+        3.1.2) since it's always going to be "1" turn I will assign it as "X" and wherever he/she clicks on the board, and the box, will have the "X" appear on the spot.
+    3.2) render those values to the page
+    3.3) wait for the user to click a square
+        3.3.1) figure out the index of each box so we can link it and see which one was clicked
+
+
+5) handle a player clicking a clear button, music button, and restart button.
+    5.1) clear button is used after each round until there is a winner
+    5.2) for people who don't like music in the background create a button that will turn on/off on clicking
+    5.3) restart button is ONLY when there is a winner that won three rounds total.
+

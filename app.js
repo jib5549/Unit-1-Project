@@ -111,8 +111,6 @@ function updateScoreBoard() {
   document.getElementById("o-score").textContent = `Player O: ${oScore}`;
 }
 
-
-
 function boxClicked(event) {
   const position = event.target.id;
   if (winner || board[position] !== null) return;
