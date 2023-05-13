@@ -88,7 +88,6 @@ function render() {
     messageEl.textContent = `${PLAYERS[winner]} WINS!!!`;
     
   }
-  console.log(winner);
   if (PLAYERS[winner] === "X") {
     xScore += 1;
     document.getElementById("x-score").textContent = `Player X: ${xScore}`;
