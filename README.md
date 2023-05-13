@@ -10,7 +10,7 @@
     or diagonally, before the opponent does.</p>
     <br>
 <h4 style="text-align: center; font-size: 30px">GAME RULES:</h4>
-    Be the first to win total of three rounds and you WIN!
+    Be the first to win total of three rounds and you WIN!<br>
     <a href="https://tictactoe-jmb.netlify.app"> Click to play!</a>
     <img src="https://i.imgur.com/5wwrV1k.png">
     
